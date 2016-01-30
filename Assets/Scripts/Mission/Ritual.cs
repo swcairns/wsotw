@@ -4,39 +4,52 @@ using System.Collections;
 
 public class Ritual {
 
-	public enum RitualStatus {INCOMPLETE, SUCCEEDED, FAILED};
 	public string name;
-	public string priority;
-	public RitualStatus status;
+	public int priority;
+	public string status;
 	public List<Task> tasks;
 
 	public Ritual(string name, List<Task> tasks) {
 		this.name = name;
 		this.tasks = tasks;
-		this.status = RitualStatus.INCOMPLETE;
+		this.status = "incomplete";
 	}
 
 	public Task FindTaskByName(string name) {
 		return tasks.Find(item => item.name == name);
 	}
 
-	public void SetTaskStatus(string name, Task.TaskStatus status) {
+	// Returns true if you successfully perform the task. Returns false otherwise.
+	public bool PerformTask(string name) {
+		// Find the task by the name passed in.
 		Task task = FindTaskByName(name);
-		task.status = status;
+
+		// Check if there are any tasks that have not been completed that are higher priority.
+		foreach(Task t in tasks) {
+			if (t.priority < task.priority && t.status != "succeeded") {
+				EventManager.TriggerEvent("strike");
+				return false;
+			}
+		}
+
+		// Looking good! Now let's actually perform the task.
+		task.Perform();
+
+		// Update the status of this ritual so we know if it's succeeded or just incomplete.
+		UpdateStatus();
+
+		return true;
 	}
 
 	public void UpdateStatus() {
-		foreach (Task task in tasks) {
-			if (task.status == Task.TaskStatus.FAILED) {
-				status = RitualStatus.FAILED;
-				return;
-			}
-			else if (task.status == Task.TaskStatus.INCOMPLETE) {
-				status = RitualStatus.INCOMPLETE;
+		foreach (Task t in tasks) {
+			if (t.status != "succeeded") {
+				status = "incomplete";
 				return;
 			}
 		}
 
-		status = RitualStatus.SUCCEEDED;
+		status = "succeeded";
+		return;
 	}
 }

@@ -3,30 +3,29 @@ using System.Collections;
 
 public class Task {
 
-	public enum TaskStatus {INCOMPLETE, SUCCEEDED, FAILED};
+	public string status;
 	public int priority;
-	public int startDay;
-	public int frequency;
 	public string name;
 	public string description;
-	public TaskStatus status;
 
-	public Task(string name, int startDay, int frequency, int priority, string description = "") {
+	public Task(string name, int priority, string description = "") {
 		this.name = name;
-		this.startDay = startDay;
-		this.frequency = frequency;
 		this.priority = priority;
 		this.description = description;
-		this.status = TaskStatus.INCOMPLETE;
+		this.status = "incomplete";
+	}
+
+	public void Perform() {
+		this.status = "success";
+		EventManager.TriggerEvent("task_completed");
 	}
 
 	public void Succeeded() {
-		status = TaskStatus.SUCCEEDED;
+		status = "succeeded";
 	}
 
 	public void Failed() {
-		status = TaskStatus.FAILED;
+		status = "failed";
 	}
 
-	//TODO: Trigger event when the status changes. That will let us update Rituals and Days
 }

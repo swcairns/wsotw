@@ -28,9 +28,13 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		
 	}
 
-	public void StartTask(string name) {
+	public void TaskSuccess(string name) {
 		Day day = days.Find(item => item.dayNumber == currentDay);
 		day.PerformTask(name);
+	}
+
+	public void TaskFailed(string name) {
+		EventManager.TriggerEvent("strike");
 	}
 
 	void HandleStrike() {

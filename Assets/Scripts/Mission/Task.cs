@@ -12,7 +12,7 @@ public class Task {
 	public string successSFX;
     public string failSFX;
 
-	public Task(string name, int? priority, string description = "", string phraseToType = "", string loopSFX = "", string successSFX = "") {
+    public Task(string name, int? priority, string description = "", string phraseToType = "", string loopSFX = "", string successSFX = "", string failSFX = "") {
 		this.name = name;
 		this.priority = priority;
 		this.description = description;

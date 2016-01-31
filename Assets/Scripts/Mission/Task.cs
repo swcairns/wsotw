@@ -31,5 +31,6 @@ public class Task {
 			EventManager.TriggerEvent("task_failed");
 		}
 
+        return succeeded;
 	}
 }

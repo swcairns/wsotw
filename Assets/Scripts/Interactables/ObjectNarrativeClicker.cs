@@ -81,7 +81,7 @@ public class ObjectNarrativeClicker : Interactable {
     {
         if(UseSound != null)
         {
-            //TODO End playing use sound
+            //TODO Play use sound
             //UseSound
         }
 

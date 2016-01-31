@@ -74,17 +74,21 @@ public class ObjectTyper : Interactable {
         typeProgress = 0;
         UpdateLabelColor();
 
-        if(IsDone)
-        {
-        }
-        else
-        {
-        }
+        NarrativeManager.Instance.PerformTask(Name, IsDone);
 
         if(UseSound != null)
         {
-            //TODO End playing use sound
-            //UseSound
+            //TODO Stop playing the use sound
+            //UseSound.Stop
+        }
+
+        if(IsDone)
+        {
+            //Play success soung
+            if(SuccessSound != null)
+            {
+                //SuccessSound
+            }
         }
 
         prevInput = "";
@@ -153,8 +157,7 @@ public class ObjectTyper : Interactable {
                         //TODO Play error sound
                         //GameManager.Instance.TaskErrorSound
 
-                        //EndUse();
-                        DoneInteractable();
+                        EndUse();
                     }
                 }
             }

@@ -84,8 +84,7 @@ public abstract class Interactable : MonoBehaviour {
     {
         if(!IsDone)
         {
-            // Check with manager if the ritual was successful (right time to do this task)
-            if(NarrativeManager.Instance.PerformTask(Name))
+            if(NarrativeManager.Instance.PerformTask(Name, IsDone))
             {
                 IsDone = true;
                 Done();

@@ -140,22 +140,22 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		}
 
 		string taskDescription = "";
-		if (data.Keys.Contains["task_description"]) {
+		if (data.Keys.Contains("task_description")) {
 			taskDescription = data["task_description"].ToString();
 		}
 	
 		string phraseToType = "";
-		if (data.Keys.Contains["phrase_to_type"]) {
+		if (data.Keys.Contains("phrase_to_type")) {
 			taskDescription = data["phrase_to_type"].ToString();
 		}
 
 		string loopSFX = "";
-		if (data.Keys.Contains["loop_sfx"]) {
+		if (data.Keys.Contains("loop_sfx")) {
 			taskDescription = data["loop_sfx"].ToString();
 		}
 
 		string successSFX = "";
-		if (data.Keys.Contains["success_sfx"]) {
+		if (data.Keys.Contains("success_sfx")) {
 			taskDescription = data["success_sfx"].ToString();
 		}
 

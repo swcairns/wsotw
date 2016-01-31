@@ -3,7 +3,11 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
+    //public const int LAYER_INTERACTABLE = 
+
 	NavMeshAgent agent;
+
+
 
 	// Use this for initialization
 	void Start () {

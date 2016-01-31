@@ -153,7 +153,8 @@ public class ObjectTyper : Interactable {
                         //TODO Play error sound
                         //GameManager.Instance.TaskErrorSound
 
-                        EndUse();
+                        //EndUse();
+                        DoneInteractable();
                     }
                 }
             }

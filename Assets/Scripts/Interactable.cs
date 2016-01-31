@@ -73,37 +73,25 @@ public abstract class Interactable : MonoBehaviour {
         {
             IsInUse = false;
             EndUse();
-
-            if(IsDone)
-            {
-                //NarrativeManager.Instance.TaskSuccess(Name);
-            }
-            else
-            {
-                //NarrativeManager.Instance.TaskFailed(Name);
-            }
         }
     }
 
+    // Called by derived tasks
     public void DoneInteractable()
     {
         if(!IsDone)
         {
-            //TODO Check with manager if the ritual was successful
-            //if(NarrativeManager.Instance.CheckTask(Name))
-            //{
-            IsDone = true;
-            Done();
-            EndUseInteractable();
-            DeactivateTrigger();
-            PlayerInteractCheck.Instance.ActiveInteractableDone();
-            GetComponent<Collider>().enabled = false;
-            enabled = false;
-            //}
-            /*else
+            // Check with manager if the ritual was successful (right time to do this task)
+            if(NarrativeManager.Instance.PerformTask(Name))
             {
-                NarrativeManager.Instance.TaskFailed(Name);   
-            }*/
+                IsDone = true;
+                Done();
+                EndUseInteractable();
+                DeactivateTrigger();
+                PlayerInteractCheck.Instance.ActiveInteractableDone();
+                GetComponent<Collider>().enabled = false;
+                enabled = false;
+            }
         }
     }
 

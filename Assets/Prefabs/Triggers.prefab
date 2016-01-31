@@ -151,6 +151,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &195476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 499786}
+  - 135: {fileID: 13590334}
+  - 114: {fileID: 11417014}
+  m_Layer: 9
+  m_Name: workout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &197576
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +196,7 @@ GameObject:
   - 135: {fileID: 13551362}
   - 114: {fileID: 11437490}
   m_Layer: 9
-  m_Name: workout
+  m_Name: bedtime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,11 +245,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.416, y: 1.145, z: -19.96}
+  m_LocalPosition: {x: 24.19, y: 1.145, z: -9.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 480836}
-  m_RootOrder: 6
+  m_RootOrder: 10
 --- !u!4 &441070
 Transform:
   m_ObjectHideFlags: 1
@@ -297,10 +314,11 @@ Transform:
   - {fileID: 473714}
   - {fileID: 441070}
   - {fileID: 483074}
-  - {fileID: 433884}
+  - {fileID: 499786}
   - {fileID: 401790}
   - {fileID: 495016}
   - {fileID: 402010}
+  - {fileID: 433884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &483074
@@ -327,6 +345,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 480836}
   m_RootOrder: 8
+--- !u!4 &499786
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.416, y: 1.145, z: -19.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 480836}
+  m_RootOrder: 6
 --- !u!114 &11401206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,6 +383,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: adjust_heading
   targetTaskObject: {fileID: 0}
+--- !u!114 &11417014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5485dd9c4c288497fab30c726a46e56e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: workout
 --- !u!114 &11420734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485dd9c4c288497fab30c726a46e56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: workout
+  Name: bedtime
 --- !u!114 &11444592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -565,6 +607,18 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13590334
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195476}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

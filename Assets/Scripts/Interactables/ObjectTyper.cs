@@ -72,12 +72,8 @@ public class ObjectTyper : Interactable {
     protected override void EndUse()
     {
         typeProgress = 0;
+        GetNextLetter();
         UpdateLabelColor();
-
-        if(!IsDone)
-        {
-            NarrativeManager.Instance.PerformTask(Name, false);
-        }
 
         if(UseSound != null)
         {
@@ -160,7 +156,7 @@ public class ObjectTyper : Interactable {
                         //TODO Play error sound
                         //GameManager.Instance.TaskErrorSound
 
-                        EndUse();
+                        EndUseInteractable();
                     }
                 }
             }

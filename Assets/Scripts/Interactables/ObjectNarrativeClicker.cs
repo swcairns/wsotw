@@ -61,8 +61,8 @@ public class ObjectNarrativeClicker : Interactable {
 
                     if(hitInfo.collider == targetTaskObject)
                     {
-                        Use();
-                        EndUse();
+                        UseInteractable();
+                        EndUseInteractable();
                     }
                 }
             }

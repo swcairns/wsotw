@@ -70,12 +70,17 @@ public abstract class Interactable : MonoBehaviour {
         }
     }
 
-    public void EndUseInteractable()
+    public void EndUseInteractable(bool performTask = true)
     {
         if(IsInUse)
         {
             IsInUse = false;
             EndUse();
+
+            if(performTask)
+            {
+                NarrativeManager.Instance.PerformTask(Name, false);
+            }
         }
     }
 
@@ -88,11 +93,15 @@ public abstract class Interactable : MonoBehaviour {
             {
                 IsDone = true;
                 Done();
-                EndUseInteractable();
+                EndUseInteractable(false);
                 DeactivateTrigger();
                 PlayerInteractCheck.Instance.ActiveInteractableDone();
                 GetComponent<Collider>().enabled = false;
                 enabled = false;
+            }
+            else
+            {
+                EndUseInteractable(false);
             }
         }
     }

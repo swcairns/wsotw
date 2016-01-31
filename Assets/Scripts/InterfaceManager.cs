@@ -11,7 +11,6 @@ public class InterfaceManager : MonoBehaviour {
     public Transform Canvas;
     public Transform Panel;
     public Singleton<NarrativeManager> narrativeManager;
-    public 
 
     // Personal references
     public List<Task> taskList = new List<Task>();
@@ -58,7 +57,7 @@ public class InterfaceManager : MonoBehaviour {
     private void CreateTaskList()
     {
         taskList.Clear();
-        taskList = NarrativeManager.Instance.GetTodaysTasks();
+        //taskList = NarrativeManager.Instance.GetTodaysTasks();
     }
 
     // Thing to turn on bullet points for the day.

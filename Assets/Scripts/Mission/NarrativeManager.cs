@@ -17,19 +17,27 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 
 	void OnEnable() {
 		EventManager.StartListening("strike", HandleStrike);
+		EventManager.StartListening("DataLoaded", OnDataLoaded);
+
 	}
 
 	void OnDisable() {
 		EventManager.StopListening("strike", HandleStrike);
+		EventManager.StopListening("DataLoaded", OnDataLoaded);
+
 	}
 
 	// Use this for initialization
 	void Start () {
 		udc = GetComponent<UnityDataConnector>();
 		udc.Connect();
-		currentDay = 1;
+		currentDay = 0;
 		strikes = 0;
 		days = new List<Day>();
+	}
+
+	void OnDataLoaded() {
+		Reset();
 	}
 
 	public bool PerformTask(string name, bool succeeded) {
@@ -116,7 +124,6 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 				AddTask(startDay, data);
 			}
 		}
-
         EventManager.TriggerEvent("DataLoaded");
 	}
 
@@ -179,14 +186,16 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	}
 
 	List<Task> GetTodaysTasks() {
+		Debug.Log("Here are today's Tasks:");
 		List<Task> taskList = new List<Task>();
 
 		foreach (Ritual ritual in Today().rituals) {
 			foreach(Task task in ritual.tasks) {
+				Debug.Log(task.name);
 				taskList.Add(task);
 			}
 		}
-
+		Debug.Log("That's the plan for the day!");
 		return taskList;
 	}
 
@@ -197,6 +206,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 
 	void Reset() {
 		currentDay++;
+		GetTodaysTasks();
 		EventManager.TriggerEvent("new_day");
 	}
 

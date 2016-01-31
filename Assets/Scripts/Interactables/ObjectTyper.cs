@@ -253,9 +253,9 @@ public class ObjectTyper : Interactable {
             Description = t.description;
             StringToType = t.phraseToType;
 
-            Debug.Log(t.loopSFX, gameObject);
-            Debug.Log(t.successSFX, gameObject);
-            Debug.Log(t.failSFX, gameObject);
+            //Debug.Log(t.loopSFX, gameObject);
+            //Debug.Log(t.successSFX, gameObject);
+            //Debug.Log(t.failSFX, gameObject);
 
             if(t.loopSFX != "")
             {
@@ -284,14 +284,14 @@ public class ObjectTyper : Interactable {
         }
         else
         {
-            Debug.LogWarning("Task " + Name + " does not exist on day " + NarrativeManager.Instance.Today().dayNumber + "!", gameObject);
+            //Debug.LogWarning("Task " + Name + " does not exist on day " + NarrativeManager.Instance.Today().dayNumber + "!", gameObject);
             gameObject.SetActive(false);
         }
     }
 
     public override void Reset()
     {
-    	Debug.Log("Typer Object Reset");
+    	//Debug.Log("Typer Object Reset: " + uiText.text);
         base.Reset();
 
         prevInput = "";

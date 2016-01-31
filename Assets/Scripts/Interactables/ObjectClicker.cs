@@ -140,7 +140,7 @@ public class ObjectClicker : Interactable {
         }
         else
         {
-			Debug.LogWarning("Task " + Name + " does not exist on day " + NarrativeManager.Instance.Today().dayNumber + "!", gameObject);
+			//Debug.LogWarning("Task " + Name + " does not exist on day " + NarrativeManager.Instance.Today().dayNumber + "!", gameObject);
             gameObject.SetActive(false);
         }
     }

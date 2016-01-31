@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-    //public const int LAYER_INTERACTABLE = 
+    public const int LAYER_INTERACTABLE = 9;
+    public const int LAYERMASK = ~(1 << 9);
 
 	NavMeshAgent agent;
 
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
          {
              RaycastHit hit;
              Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-             if (Physics.Raycast(ray, out hit))
+             if (Physics.Raycast(ray, out hit, 1000.0f, LAYERMASK))
              {
 				agent.destination = hit.point;
              }

@@ -195,8 +195,4 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		}
 		return null;
 	}
-
-	void HandleTest(string value) {
-		Debug.Log("Heard an event! " + value);
-	}
 }

@@ -53,7 +53,7 @@ public class Day {
 		foreach (Ritual r in rituals) {
 			if (r.name != ritual.name) {
 				if (r.status == "in_progress") {
-					// A different ritual is still in progress! You dun goofed.
+					Debug.Log("A different ritual is still in progress! You dun goofed.");
 					EventManager.TriggerEvent("strike");
 					return false;
 				}
@@ -61,8 +61,10 @@ public class Day {
 		}
 
 		// You don't have another ritual in progress, so make sure you're doing this ritual in the right order.
+		// Make sure we're not comparing against null priorities.
 		foreach (Ritual r in rituals) {
-			if (r.priority < ritual.priority && r.status != "succeeded") {
+			if (r.priority != null && r.priority < ritual.priority && r.status != "succeeded") {
+				Debug.Log("You didn't perform the rituals in the correct order");
 				EventManager.TriggerEvent("strike");
 				return false;
 			}			
@@ -71,7 +73,7 @@ public class Day {
 		//Forward this on to the Ritual to do some checking there.
 		if (ritual.PerformTask(name)) {
 			// If we're able to perform this task, then this ritual is now in progress.
-			ritual.status = "in_progress";
+			Debug.Log("You performed the task successfully.");
 			return true;
 		}
 		else {
@@ -87,5 +89,23 @@ public class Day {
 		}
 
 		return tasks;
+	}
+
+	public void UpdateStatus() {
+		// If all tasks have succeeded, then this ritual is complete.
+		bool succeeded = true;
+		foreach (Ritual r in rituals) {
+			if (r.status != "succeeded") {
+				succeeded = false;
+			}
+		}
+		if (succeeded) {
+			status = "succeeded";
+			return;
+		}
+
+		// If only some tasks have succeeded, then this ritual is in progress.
+		// Since we're here checking the ritual, then at least one task must have been performed.
+		status = "in_progress"; 
 	}
 }

@@ -22,16 +22,7 @@ public class Task {
 	}
 
 	public void Perform() {
-		this.status = "success";
+		this.status = "succeeded";
 		EventManager.TriggerEvent("task_completed");
 	}
-
-	public void Succeeded() {
-		status = "succeeded";
-	}
-
-	public void Failed() {
-		status = "failed";
-	}
-
 }

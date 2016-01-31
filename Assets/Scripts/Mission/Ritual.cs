@@ -32,6 +32,7 @@ public class Ritual {
 		foreach(Task t in tasks) {
 			if (t.priority != null) {
 				if (t.priority < task.priority && t.status != "succeeded") {
+					Debug.Log("You didn't perform the tasks in the right order! STRIKE.");
 					EventManager.TriggerEvent("strike");
 					return false;
 				}
@@ -48,14 +49,20 @@ public class Ritual {
 	}
 
 	public void UpdateStatus() {
+		// If all tasks have succeeded, then this ritual is complete.
+		bool succeeded = true;
 		foreach (Task t in tasks) {
 			if (t.status != "succeeded") {
-				status = "incomplete";
-				return;
+				succeeded = false;
 			}
 		}
+		if (succeeded) {
+			status = "succeeded";
+			return;
+		}
 
-		status = "succeeded";
-		return;
+		// If only some tasks have succeeded, then this ritual is in progress.
+		// Since we're here checking the ritual, then at least one task must have been performed.
+		status = "in_progress"; 
 	}
 }

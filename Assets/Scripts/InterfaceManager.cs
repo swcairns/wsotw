@@ -31,12 +31,12 @@ public class InterfaceManager : MonoBehaviour {
 
     void OnEnable()
     {
-        EventManager.Instance.StartListening("task_completed", HandleTaskCompleted);
+        EventManager.StartListening("task_completed", HandleTaskCompleted);
     }
 
     void OnDisable()
     {
-        EventManager.Instance.StopListening("task_completed", HandleTaskCompleted);
+        EventManager.StopListening("task_completed", HandleTaskCompleted);
     }
 
     void Start()

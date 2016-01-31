@@ -166,7 +166,12 @@ public class NarrativeManager : Singleton<NarrativeManager> {
             successSFX = data["success_sfx"].ToString();
 		}
 
-		Task task = new Task(taskName, taskPriority, taskDescription, phraseToType, loopSFX, successSFX);
+        string failSFX = "";
+        if (data.Keys.Contains("fail_sfx")) {
+            failSFX = data["fail_sfx"].ToString();
+        }
+
+        Task task = new Task(taskName, taskPriority, taskDescription, phraseToType, loopSFX, successSFX, failSFX);
 
 		// Add that task to the ritual
 		ritual.tasks.Add(task);

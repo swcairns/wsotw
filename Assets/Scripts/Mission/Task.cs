@@ -10,6 +10,7 @@ public class Task {
 	public string phraseToType;
 	public string loopSFX;
 	public string successSFX;
+    public string failSFX;
 
 	public Task(string name, int? priority, string description = "", string phraseToType = "", string loopSFX = "", string successSFX = "") {
 		this.name = name;
@@ -19,6 +20,7 @@ public class Task {
 		this.status = "incomplete";
 		this.loopSFX = loopSFX;
 		this.successSFX = successSFX;
+        this.failSFX = failSFX;
 	}
 
 	public bool Perform(bool succeeded) {

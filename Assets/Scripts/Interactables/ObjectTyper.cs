@@ -180,14 +180,17 @@ public class ObjectTyper : Interactable {
 
     private void GetNextLetter()
     {
-        if(StringToType.Length > 0)
-        {
-            nextLetter = StringToType.Substring(typeProgress, 1);
-        }
-        else
-        {
-            nextLetter = "";
-        }
+    	if (StringToType != null) {
+			if(StringToType.Length > 0)
+	        {
+	            nextLetter = StringToType.Substring(typeProgress, 1);
+	        }
+	        else
+	        {
+	            nextLetter = "";
+	        }
+    	}
+
     }
 
     private void UpdateLabelColor()
@@ -288,12 +291,13 @@ public class ObjectTyper : Interactable {
 
     public override void Reset()
     {
+    	Debug.Log("Typer Object Reset");
         base.Reset();
 
         prevInput = "";
         showText = false;
         typeProgress = 0;
-
+        Initialize();
         GetNextLetter();
     }
 }

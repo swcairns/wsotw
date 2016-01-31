@@ -17,13 +17,10 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 
 	void OnEnable() {
 		EventManager.StartListening("strike", HandleStrike);
-		EventManager.StartListening("new_day", HandleNewDay);
 	}
 
 	void OnDisable() {
 		EventManager.StopListening("strike", HandleStrike);
-		EventManager.StopListening("new_day", HandleNewDay);
-
 	}
 
 	// Use this for initialization
@@ -193,25 +190,38 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		return taskList;
 	}
 
-	void HandleNewDay() {
-		StartCoroutine(FadeTo(1.0f, 2.0f));	
+	public void NewDay() {
+		StartCoroutine(FadeOut());
+		StartCoroutine(FadeIn());
+	}
+
+	void Reset() {
+		currentDay++;
+		EventManager.TriggerEvent("new_day");
+	}
+
+	IEnumerator FadeOut() {
+		StartCoroutine(FadeTo(1.0f, 2.0f));
+		yield return new WaitForSeconds(1.0f);
+	}
+
+	IEnumerator FadeIn() {
+		yield return new WaitForSeconds(3.0f);
+		Reset();
+		StartCoroutine(FadeTo(0.0f, 2.0f));
 	}
 
 	IEnumerator FadeTo(float aValue, float aTime)
-	 {
+	{
 		GameObject screen = GameObject.Find("FadeOutScreen");
-	     float alpha = screen.GetComponent<Renderer>().material.color.a;
-	     for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
-	     {
-	         Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha,aValue,t));
-			 screen.GetComponent<Renderer>().material.color = newColor;
-	         yield return null;
-	     }
-
-	     yield return new WaitForSeconds(1.0f);
-
-	     StartCoroutine(FadeTo(0.0f, 2.0f));
-	 }
+	    float alpha = screen.GetComponent<Renderer>().material.color.a;
+	    for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+	    {
+	        Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha,aValue,t));
+			screen.GetComponent<Renderer>().material.color = newColor;
+	        yield return null;
+	    }
+	}
 
 	public Task FindTaskByNameToday(string name) {
 		foreach (Ritual ritual in Today().rituals) {

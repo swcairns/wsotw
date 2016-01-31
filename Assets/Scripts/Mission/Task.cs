@@ -34,8 +34,7 @@ public class Task {
 		}
 
         if (name == "bedtime") {
-        	NarrativeManager.Instance.currentDay++;
-        	EventManager.TriggerEvent("new_day");
+        	NarrativeManager.Instance.NewDay();
         }
 
 		return succeeded;

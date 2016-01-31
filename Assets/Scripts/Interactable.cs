@@ -139,6 +139,7 @@ public abstract class Interactable : MonoBehaviour {
 
     public virtual void Reset()
     {
+    	Debug.Log("Resetting tasks");
         TriggerActive = false;
         IsNearest = false;
         IsInUse = false;

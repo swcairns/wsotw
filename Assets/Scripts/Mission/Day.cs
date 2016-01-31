@@ -8,8 +8,9 @@ public class Day {
 	public int dayNumber;
 	public string status;
 
-	public Day(List<Ritual> rituals) {
-		this.rituals = rituals;
+	public Day(int dayNumber) {
+		this.dayNumber = dayNumber;
+		rituals = new List<Ritual>();
 	}
 
 	public Task FindTaskByName(string name) {
@@ -63,4 +64,5 @@ public class Day {
 			ritual.status = "in_progress";
 		};
 	}
+
 }

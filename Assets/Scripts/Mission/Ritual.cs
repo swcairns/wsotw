@@ -5,14 +5,18 @@ using System.Collections;
 public class Ritual {
 
 	public string name;
-	public int priority;
+	public int? priority;
+	public string ritualType;
 	public string status;
 	public List<Task> tasks;
 
-	public Ritual(string name, List<Task> tasks) {
+	public Ritual(string name, int? priority, string ritualType) {
 		this.name = name;
-		this.tasks = tasks;
+		this.priority = priority;
+		this.ritualType = ritualType;
 		this.status = "incomplete";
+
+		tasks = new List<Task>();
 	}
 
 	public Task FindTaskByName(string name) {

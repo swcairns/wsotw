@@ -31,6 +31,11 @@ public class Task {
 			EventManager.TriggerEvent("task_failed");
 		}
 
-        return succeeded;
+        if (name == "bedtime") {
+        	NarrativeManager.Instance.currentDay++;
+        	EventManager.TriggerEvent("new_day");
+        }
+
+		return succeeded;
 	}
 }

@@ -19,10 +19,10 @@ public class UnityDataConnector : MonoBehaviour
 	JsonData[] ssObjects;
 	bool saveToGS; 
 
-	Rect guiBoxRect;
-	Rect guiButtonRect;
-	Rect guiButtonRect2;
-	Rect guiButtonRect3;
+//	Rect guiBoxRect;
+//	Rect guiButtonRect;
+//	Rect guiButtonRect2;
+//	Rect guiButtonRect3;
 	
 	void Start ()
 	{
@@ -30,29 +30,29 @@ public class UnityDataConnector : MonoBehaviour
 		currentStatus = "Offline";
 		saveToGS = false;
 
-		guiBoxRect = new Rect(10, 10, 310, 140);
-		guiButtonRect = new Rect(30, 40, 270, 30);
-		guiButtonRect2 = new Rect(30, 75, 270, 30);
-		guiButtonRect3 = new Rect(30, 110, 270, 30);
+//		guiBoxRect = new Rect(10, 10, 310, 140);
+//		guiButtonRect = new Rect(30, 40, 270, 30);
+//		guiButtonRect2 = new Rect(30, 75, 270, 30);
+//		guiButtonRect3 = new Rect(30, 110, 270, 30);
 	}
 	
-	void OnGUI()
-	{
-		GUI.Box(guiBoxRect, currentStatus);
-		if (GUI.Button(guiButtonRect, "Update From Google Spreadsheet"))
-		{
-			Connect();
-		}
-
-		saveToGS = GUI.Toggle(guiButtonRect2, saveToGS, "Save Stats To Google Spreadsheet");
-
-		if (GUI.Button(guiButtonRect3, "Reset Balls values"))
-		{
-			dataDestinationObject.SendMessage("ResetBalls");
-		}
-	}
+//	void OnGUI()
+//	{
+//		GUI.Box(guiBoxRect, currentStatus);
+//		if (GUI.Button(guiButtonRect, "Update From Google Spreadsheet"))
+//		{
+//			Connect();
+//		}
+//
+//		saveToGS = GUI.Toggle(guiButtonRect2, saveToGS, "Save Stats To Google Spreadsheet");
+//
+//		if (GUI.Button(guiButtonRect3, "Reset Balls values"))
+//		{
+//			dataDestinationObject.SendMessage("ResetBalls");
+//		}
+//	}
 	
-	void Connect()
+	public void Connect()
 	{
 		if (updating)
 			return;

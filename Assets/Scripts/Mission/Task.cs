@@ -4,11 +4,11 @@ using System.Collections;
 public class Task {
 
 	public string status;
-	public int priority;
+	public int? priority;
 	public string name;
 	public string description;
 
-	public Task(string name, int priority, string description = "") {
+	public Task(string name, int? priority, string description = "") {
 		this.name = name;
 		this.priority = priority;
 		this.description = description;

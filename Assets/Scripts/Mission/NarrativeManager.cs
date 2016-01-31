@@ -32,11 +32,6 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 
 		days = new List<Day>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void TaskSuccess(string name) {
 		Day day = days.Find(item => item.dayNumber == currentDay);

@@ -32,7 +32,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		days = new List<Day>();
 	}
 
-	public void TaskSuccess(string name) {
+	public bool PerformTask(string name) {
 		Day day = days.Find(item => item.dayNumber == currentDay);
 		Task task = day.FindTaskByName(name);
 
@@ -49,11 +49,12 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 			task.priority = maxPriority + 1;
 		}
 
-		day.PerformTask(name);
-	}
-
-	public void TaskFailed(string name) {
-		EventManager.TriggerEvent("strike");
+		if (day.PerformTask(name)) {
+			return true;
+		}
+		else {
+			return false;
+		};
 	}
 
 	// The first time you do your personal tasks, we need to remember the order that you performed them in.

@@ -35,7 +35,7 @@ public class Day {
 		return null;
 	}
 
-	public void PerformTask(string name) {
+	public bool PerformTask(string name) {
 		// First find which ritual this task is for.
 		Ritual ritual = FindRitualByTask(name);
 
@@ -45,7 +45,7 @@ public class Day {
 				if (r.status == "in_progress") {
 					// A different ritual is still in progress! You dun goofed.
 					EventManager.TriggerEvent("strike");
-					return;
+					return false;
 				}
 			}
 		}
@@ -54,7 +54,7 @@ public class Day {
 		foreach (Ritual r in rituals) {
 			if (r.priority < ritual.priority && r.status != "succeeded") {
 				EventManager.TriggerEvent("strike");
-				return;
+				return false;
 			}			
 		}
 
@@ -62,7 +62,11 @@ public class Day {
 		if (ritual.PerformTask(name)) {
 			// If we're able to perform this task, then this ritual is now in progress.
 			ritual.status = "in_progress";
-		};
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public int TaskCount() {

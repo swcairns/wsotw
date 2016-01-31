@@ -89,6 +89,7 @@ public class ObjectNarrativeClicker : Interactable {
         //TODO Check with NarrativeManager if this Interactable is Done
         //if(NarrativeManager.instance.CheckSuccess(Name))
         //{
+        Debug.Log("Narrative clicking done!", gameObject);
         DoneInteractable();
         //}
         //else

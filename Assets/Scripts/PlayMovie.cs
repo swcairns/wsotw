@@ -7,7 +7,7 @@ public class PlayMovie : MonoBehaviour {
 
 	void Start()
 	{
-		MovieTexture movie = (MovieTexture)GetComponent<Renderer> ().material.mainTexture;
+		/*MovieTexture movie = (MovieTexture)GetComponent<Renderer> ().material.mainTexture;
 		movie.loop = true;
 		movie.Play ();
 
@@ -18,6 +18,6 @@ public class PlayMovie : MonoBehaviour {
 			a.spatialize = false;
 			a.loop = true;
 			a.Play ();
-		}
+		}*/
 	}
 }

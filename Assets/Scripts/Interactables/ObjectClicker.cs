@@ -99,4 +99,21 @@ public class ObjectClicker : Interactable {
     {
         targetTaskObject = transform.parent.gameObject.GetComponent<Collider>();
     }
+
+    protected override void Initialize()
+    {
+        Task t = NarrativeManager.Instance.FindTaskByNameToday(Name);
+
+        if(t != null)
+        {
+            Description = t.description;
+            //UseSound = t.loopSFX;
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("Task " + Name + " does not exist!", gameObject);
+            gameObject.SetActive(false);
+        }
+    }
 }

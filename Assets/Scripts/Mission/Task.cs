@@ -7,7 +7,7 @@ public class Task {
 	public int? priority;
 	public string name;
 	public string description;
-	public string phaseToType;
+	public string phraseToType;
 	public string loopSFX;
 	public string successSFX;
 
@@ -15,6 +15,7 @@ public class Task {
 		this.name = name;
 		this.priority = priority;
 		this.description = description;
+        this.phraseToType = phraseToType;
 		this.status = "incomplete";
 		this.loopSFX = loopSFX;
 		this.successSFX = successSFX;

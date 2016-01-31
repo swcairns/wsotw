@@ -6,6 +6,7 @@ public abstract class Interactable : MonoBehaviour {
     //private const int LAYER_PLAYER = 8;
 
     public string Name;
+    public string Description;
 
     public bool TriggerActive { get; private set; }
     public bool IsNearest { get; private set; }
@@ -115,5 +116,12 @@ public abstract class Interactable : MonoBehaviour {
     void Awake()
     {
         DistanceToPlayer = -1.0f;
+        EventManager.StartListening("DataLoaded", Initialize);
     }
+
+    void OnDestroy() {
+        EventManager.StopListening("DataLoaded", Initialize);
+    }
+
+    protected abstract void Initialize();
 }

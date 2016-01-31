@@ -46,9 +46,11 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 			if (ritual.ritualType == "personal") {
 				int? maxPriority = 0;
 				foreach (Task t in ritual.tasks) {
-					if (t.priority > maxPriority) {
-						maxPriority = t.priority;
-					}
+                    if(t.priority != null) {
+    					if (t.priority > maxPriority) {
+    						maxPriority = t.priority;
+    					}
+                    }
 				}
 
 				task.priority = maxPriority + 1;
@@ -113,7 +115,9 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 			else {
 				AddTask(startDay, data);
 			}
-		}	
+		}
+
+        EventManager.TriggerEvent("DataLoaded");
 	}
 
 	void AddTask(int dayNumber, JsonData data) {
@@ -146,17 +150,17 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	
 		string phraseToType = "";
 		if (data.Keys.Contains("phrase_to_type")) {
-			taskDescription = data["phrase_to_type"].ToString();
+            phraseToType = data["phrase_to_type"].ToString();
 		}
 
 		string loopSFX = "";
 		if (data.Keys.Contains("loop_sfx")) {
-			taskDescription = data["loop_sfx"].ToString();
+            loopSFX = data["loop_sfx"].ToString();
 		}
 
 		string successSFX = "";
 		if (data.Keys.Contains("success_sfx")) {
-			taskDescription = data["success_sfx"].ToString();
+            successSFX = data["success_sfx"].ToString();
 		}
 
 		Task task = new Task(taskName, taskPriority, taskDescription, phraseToType, loopSFX, successSFX);
@@ -165,7 +169,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		ritual.tasks.Add(task);
 	}
 
-	Day Today() {
+	public Day Today() {
 		return days.Find(item => item.dayNumber == currentDay);
 	}
 
@@ -181,7 +185,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		return taskList;
 	}
 
-	Task FindTaskByName(string name) {
+	public Task FindTaskByNameToday(string name) {
 		foreach (Ritual ritual in Today().rituals) {
 			foreach(Task task in ritual.tasks) {
 				if (task.name == name) {

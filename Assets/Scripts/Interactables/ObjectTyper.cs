@@ -55,6 +55,7 @@ public class ObjectTyper : Interactable {
     protected override void Use()
     {
         typeProgress = 0;
+        UpdateLabelColor();
 
         GetNextLetter();
 
@@ -67,16 +68,14 @@ public class ObjectTyper : Interactable {
 
     protected override void EndUse()
     {
+        typeProgress = 0;
+        UpdateLabelColor();
+
         if(IsDone)
         {
         }
         else
         {
-            if(typeProgress > 0)
-            {
-                typeProgress = 0;
-                UpdateLabelColor();
-            }
         }
 
         if(UseSound != null)
@@ -106,8 +105,6 @@ public class ObjectTyper : Interactable {
         GameObject textObject = (GameObject)Instantiate(GameManager.instance.TyperTextPrefab);
         textObject.transform.SetParent(GameManager.instance.Canvas, false);
         uiText = textObject.GetComponent<Text>();
-
-        UpdateLabelColor();
 
         // Disable label by default
         textObject.SetActive(false);
@@ -165,7 +162,14 @@ public class ObjectTyper : Interactable {
 
     private void GetNextLetter()
     {
-        nextLetter = StringToType.Substring(typeProgress, 1);
+        if(StringToType.Length > 0)
+        {
+            nextLetter = StringToType.Substring(typeProgress, 1);
+        }
+        else
+        {
+            nextLetter = "";
+        }
     }
 
     private void UpdateLabelColor()
@@ -187,6 +191,7 @@ public class ObjectTyper : Interactable {
         enabled = true;
 
         typeProgress = 0;
+        UpdateLabelColor();
         GetNextLetter();
 
         showText = true;
@@ -197,8 +202,6 @@ public class ObjectTyper : Interactable {
         // Deactive text object
         uiText.gameObject.SetActive(false);
         enabled = false;
-
-        typeProgress = 0;
 
         showText = false;
         prevInput = "";
@@ -217,5 +220,34 @@ public class ObjectTyper : Interactable {
         byte g = byte.Parse(hex.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
         byte b = byte.Parse(hex.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
         return new Color32(r,g,b, 255);
+    }
+
+    protected override void Initialize()
+    {
+        Task t = NarrativeManager.Instance.FindTaskByNameToday(Name);
+
+        if(t != null)
+        {
+            Description = t.description;
+            StringToType = t.phraseToType;
+            //UseSound = t.loopSFX;
+            //SuccessSound = t.successSFX;
+            gameObject.SetActive(true);
+            UpdateLabelColor();
+
+            if(IsNearest)
+            {
+                ShowText();
+            }
+            else
+            {
+                HideText();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Task " + Name + " does not exist on day " + NarrativeManager.Instance.Today().dayNumber + "!", gameObject);
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -15,11 +15,11 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	private UnityDataConnector udc;
 
 	void OnEnable() {
-		EventManager.StartListening("strike", HandleStrike);
+		EventManager.Instance.StartListening("strike", HandleStrike);
 	}
 
 	void OnDisable() {
-		EventManager.StopListening("strike", HandleStrike);
+		EventManager.Instance.StopListening("strike", HandleStrike);
 	}
 
 	// Use this for initialization
@@ -54,7 +54,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	}
 
 	public void TaskFailed(string name) {
-		EventManager.TriggerEvent("strike");
+		EventManager.Instance.TriggerEvent("strike");
 	}
 
 	// The first time you do your personal tasks, we need to remember the order that you performed them in.
@@ -69,7 +69,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 
 		if (strikes >= maxStrikes) {
 			Debug.Log("GAME OVER");
-			EventManager.TriggerEvent("game_over");
+			EventManager.Instance.TriggerEvent("game_over");
 		}
 	}
 
@@ -112,5 +112,25 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 			// Add that task to the ritual
 			ritual.tasks.Add(task);
 		}	
+	}
+
+	Day Today() {
+		return days.Find(item => item.dayNumber == currentDay);
+	}
+
+	List<Task> GetTodaysTasks() {
+		List<Task> taskList = new List<Task>();
+
+		foreach (Ritual ritual in Today().rituals) {
+			foreach(Task task in ritual.tasks) {
+				taskList.Add(task);
+			}
+		}
+
+		return taskList;
+	}
+
+	void HandleTest(string value) {
+		Debug.Log("Heard an event! " + value);
 	}
 }

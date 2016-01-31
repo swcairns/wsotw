@@ -11,6 +11,7 @@ public class InterfaceManager : MonoBehaviour {
     public Transform Canvas;
     public Transform Panel;
     public Singleton<NarrativeManager> narrativeManager;
+    public 
 
     // Personal references
     public List<Task> taskList = new List<Task>();
@@ -29,6 +30,16 @@ public class InterfaceManager : MonoBehaviour {
         }
     }
 
+    void OnEnable()
+    {
+        EventManager.Instance.StartListening("task_completed", HandleTaskCompleted);
+    }
+
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening("task_completed", HandleTaskCompleted);
+    }
+
     void Start()
     {
         // Get the tasks for today.
@@ -40,7 +51,7 @@ public class InterfaceManager : MonoBehaviour {
         {
             bulletList.Add(child);
         }
-        
+
     }
 
     // Create a new list for the day.
@@ -77,6 +88,10 @@ public class InterfaceManager : MonoBehaviour {
     }
 
     // Thing to listen for Ritual Completion events.
+    void HandleTaskCompleted()
+    {
+
+    }
 
     // Thing to turn on tasks on the ToDo List.
     public void TurnOnTask(int numTask)

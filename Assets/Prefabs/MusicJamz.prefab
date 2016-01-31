@@ -24,7 +24,7 @@ GameObject:
   - 82: {fileID: 8257256}
   - 82: {fileID: 8266404}
   m_Layer: 0
-  m_Name: AudioJamz
+  m_Name: MusicJamz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

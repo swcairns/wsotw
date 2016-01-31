@@ -266,14 +266,14 @@ Prefab:
       propertyPath: targetTaskObject
       value: 
       objectReference: {fileID: 1313499301}
-    - target: {fileID: 11414638, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
-      propertyPath: targetTaskObject
-      value: 
-      objectReference: {fileID: 1926214794}
     - target: {fileID: 11420734, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
       propertyPath: targetTaskObject
       value: 
       objectReference: {fileID: 500544895}
+    - target: {fileID: 11414638, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
+      propertyPath: targetTaskObject
+      value: 
+      objectReference: {fileID: 1926214794}
     - target: {fileID: 11401206, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
       propertyPath: targetTaskObject
       value: 

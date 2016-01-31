@@ -31,7 +31,7 @@ public class Ritual {
 		// Check if there are any tasks that have not been completed that are higher priority.
 		foreach(Task t in tasks) {
 			if (t.priority < task.priority && t.status != "succeeded") {
-				EventManager.Instance.TriggerEvent("strike");
+				EventManager.TriggerEvent("strike");
 				return false;
 			}
 		}

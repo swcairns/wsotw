@@ -44,7 +44,7 @@ public class Day {
 			if (r.name != ritual.name) {
 				if (r.status == "in_progress") {
 					// A different ritual is still in progress! You dun goofed.
-					EventManager.Instance.TriggerEvent("strike");
+					EventManager.TriggerEvent("strike");
 					return;
 				}
 			}
@@ -53,7 +53,7 @@ public class Day {
 		// You don't have another ritual in progress, so make sure you're doing this ritual in the right order.
 		foreach (Ritual r in rituals) {
 			if (r.priority < ritual.priority && r.status != "succeeded") {
-				EventManager.Instance.TriggerEvent("strike");
+				EventManager.TriggerEvent("strike");
 				return;
 			}			
 		}

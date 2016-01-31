@@ -40,7 +40,7 @@ public class Day {
 		// - There is a different ritual in progress that we haven't finished yet.
 		// - You're doing this task in the wrong order.
 		// - You fail doing the task for some reason.
-	public bool PerformTask(string name) {
+	public bool PerformTask(string name, bool succeeded) {
 		// First find which ritual this task is for.
 		Ritual ritual = FindRitualByTask(name);
 
@@ -71,7 +71,7 @@ public class Day {
 		}
 
 		//Forward this on to the Ritual to do some checking there.
-		if (ritual.PerformTask(name)) {
+		if (ritual.PerformTask(name, succeeded)) {
 			// If we're able to perform this task, then this ritual is now in progress.
 			Debug.Log("You performed the task successfully.");
 			return true;

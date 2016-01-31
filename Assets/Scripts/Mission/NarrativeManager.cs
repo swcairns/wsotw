@@ -32,7 +32,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		days = new List<Day>();
 	}
 
-	public bool PerformTask(string name) {
+	public bool PerformTask(string name, bool succeeded) {
 		Debug.Log("Narrative Manager: Performing Task: " + name);
 		Day day = Today();
 		Task task = day.FindTaskByName(name);
@@ -60,7 +60,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		}
 
 		// Perform the task. If we're successful, return true.
-		if (day.PerformTask(name)) {
+		if (day.PerformTask(name, succeeded)) {
 			Debug.Log("Narrative Manager: Task Succeeded!!");
 			return true;
 		}

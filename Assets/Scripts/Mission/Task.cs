@@ -21,8 +21,15 @@ public class Task {
 		this.successSFX = successSFX;
 	}
 
-	public void Perform() {
-		this.status = "succeeded";
-		EventManager.TriggerEvent("task_completed");
+	public bool Perform(bool succeeded) {
+		if (succeeded) {
+			this.status = "succeeded";
+			EventManager.TriggerEvent("task_succeeded");
+		}
+		else {
+			this.status = "failed";
+			EventManager.TriggerEvent("task_failed");
+		}
+
 	}
 }

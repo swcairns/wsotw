@@ -24,7 +24,7 @@ public class Ritual {
 	}
 
 	// Returns true if you successfully perform the task. Returns false otherwise.
-	public bool PerformTask(string name) {
+	public bool PerformTask(string name, bool succeeded) {
 		// Find the task by the name passed in.
 		Task task = FindTaskByName(name);
 
@@ -40,12 +40,12 @@ public class Ritual {
 		}
 
 		// Looking good! Now let's actually perform the task.
-		task.Perform();
+		bool result = task.Perform(succeeded);
 
 		// Update the status of this ritual so we know if it's succeeded or just incomplete.
 		UpdateStatus();
 
-		return true;
+		return result;
 	}
 
 	public void UpdateStatus() {

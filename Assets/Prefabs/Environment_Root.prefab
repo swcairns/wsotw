@@ -134,7 +134,7 @@ GameObject:
   - 23: {fileID: 2320080}
   - 114: {fileID: 11422650}
   m_Layer: 0
-  m_Name: BigWindows
+  m_Name: Viewscreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -893,7 +893,7 @@ GameObject:
   - 33: {fileID: 3341290}
   - 23: {fileID: 2335992}
   - 114: {fileID: 11491584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1628,6 +1628,25 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
+  m_IsActive: 1
+--- !u!1 &134180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 430262}
+  - 33: {fileID: 3389942}
+  - 64: {fileID: 6465862}
+  - 23: {fileID: 2349414}
+  - 114: {fileID: 11436712}
+  m_Layer: 0
+  m_Name: BigWindows
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &134240
 GameObject:
@@ -2688,23 +2707,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &161298
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 458366}
-  - 135: {fileID: 13592182}
-  - 114: {fileID: 11466234}
-  m_Layer: 9
-  m_Name: TypeTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &161362
 GameObject:
   m_ObjectHideFlags: 1
@@ -3087,23 +3089,6 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 1
---- !u!1 &176714
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 411904}
-  - 135: {fileID: 13539464}
-  - 114: {fileID: 11420128}
-  m_Layer: 9
-  m_Name: TypeTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &176904
 GameObject:
@@ -4738,18 +4723,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 498138}
   m_RootOrder: 5
---- !u!4 &411904
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176714}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 484794}
-  m_RootOrder: 0
 --- !u!4 &411930
 Transform:
   m_ObjectHideFlags: 1
@@ -4904,9 +4877,10 @@ Transform:
   - {fileID: 400026}
   - {fileID: 445990}
   - {fileID: 439694}
-  - {fileID: 433922}
+  - {fileID: 430262}
   - {fileID: 440806}
   - {fileID: 447674}
+  - {fileID: 433922}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &420574
@@ -5263,6 +5237,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400026}
   m_RootOrder: 3
+--- !u!4 &430262
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134180}
+  m_LocalRotation: {x: 0.5, y: -0.5000001, z: 0.5, w: 0.49999994}
+  m_LocalPosition: {x: 26.339, y: 1.695, z: -9.96}
+  m_LocalScale: {x: 1.2046896, y: 0.67763734, z: 0.7529304}
+  m_Children: []
+  m_Father: {fileID: 419058}
+  m_RootOrder: 10
 --- !u!4 &430292
 Transform:
   m_ObjectHideFlags: 1
@@ -5433,11 +5419,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 101480}
   m_LocalRotation: {x: 0.5, y: -0.5000001, z: 0.5, w: 0.49999994}
-  m_LocalPosition: {x: 26.339, y: 1.695, z: -9.96}
-  m_LocalScale: {x: 1.2046896, y: 0.67763734, z: 0.7529304}
+  m_LocalPosition: {x: 26.02, y: 1.695, z: -13.88}
+  m_LocalScale: {x: 0.35215193, y: 0.19808525, z: 0.22009474}
   m_Children: []
   m_Father: {fileID: 419058}
-  m_RootOrder: 10
+  m_RootOrder: 13
 --- !u!4 &434100
 Transform:
   m_ObjectHideFlags: 1
@@ -5992,18 +5978,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 498138}
   m_RootOrder: 18
---- !u!4 &458366
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 484794}
-  m_RootOrder: 1
 --- !u!4 &459278
 Transform:
   m_ObjectHideFlags: 1
@@ -6783,9 +6757,7 @@ Transform:
   m_LocalRotation: {x: -0.4595546, y: 0.60030526, z: 0.53741014, w: 0.3736758}
   m_LocalPosition: {x: 15.865999, y: -0.758, z: 3.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 411904}
-  - {fileID: 458366}
+  m_Children: []
   m_Father: {fileID: 400026}
   m_RootOrder: 33
 --- !u!4 &485158
@@ -9817,6 +9789,32 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!23 &2349414
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134180}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 6ff0ceae5e4bf43d59c52f677cef79bc, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
@@ -13668,6 +13666,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109528}
   m_Mesh: {fileID: 4300000, guid: 76c79d981ab09bb40a6edf656dd91384, type: 3}
+--- !u!33 &3389942
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134180}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3390088
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -15295,6 +15300,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 16b4584a010dae24782bbbcf55441cb2, type: 3}
+--- !u!64 &6465862
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &6466910
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -16923,24 +16940,6 @@ MonoBehaviour:
   mSliceDistance: 1
   mPrevSlicesX: 2
   mPrevSlicesY: 2
---- !u!114 &11420128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5485dd9c4c288497fab30c726a46e56e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: brush_teeth
-  Description: 
-  StringToType: brush teeth
-  UseSound: {fileID: 0}
-  SuccessSound: {fileID: 0}
-  DimColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0}
-  BrightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &11422650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17010,6 +17009,18 @@ MonoBehaviour:
   mSliceDistance: 1
   mPrevSlicesX: 2
   mPrevSlicesY: 2
+--- !u!114 &11436712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664ef38ddd44c4efd9c63410f4b1f3be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlaySound: 1
 --- !u!114 &11440538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17155,24 +17166,6 @@ MonoBehaviour:
   mSliceDistance: 1
   mPrevSlicesX: 2
   mPrevSlicesY: 2
---- !u!114 &11466234
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5485dd9c4c288497fab30c726a46e56e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: brush_teeth
-  Description: 
-  StringToType: brush teeth
-  UseSound: {fileID: 0}
-  SuccessSound: {fileID: 0}
-  DimColor: {r: 0.43382353, g: 0.43382353, b: 0.43382353, a: 0}
-  BrightColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &11466258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17299,30 +17292,6 @@ MonoBehaviour:
   mSliceDistance: 1
   mPrevSlicesX: 2
   mPrevSlicesY: 2
---- !u!135 &13539464
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 176714}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &13592182
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161298}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

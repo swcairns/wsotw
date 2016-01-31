@@ -4,13 +4,16 @@ using System.Collections;
 
 public class ObjectTyper : Interactable {
 
+    [System.NonSerialized]
     public string StringToType;
 
+    [System.NonSerialized]
     public AudioClip UseSound;
+    [System.NonSerialized]
     public AudioClip SuccessSound;
 
-    public Color DimColor;
-    public Color BrightColor;
+    private Color DimColor = Color.white;
+    private Color BrightColor = Color.blue;
 
     private string dimColorHex;
     private string brightColorHex;

@@ -8,9 +8,10 @@ public class ObjectNarrativeClicker : Interactable {
     private const int LAYER_TASKOBJECT = 10;
     private const int LAYERMASK = (1 << LAYER_TASKOBJECT);
 
+    [System.NonSerialized]
     public AudioClip UseSound;
 
-    private Collider targetTaskObject;
+    public Collider targetTaskObject;
 
     private bool useQueued = false;
 
@@ -102,10 +103,10 @@ public class ObjectNarrativeClicker : Interactable {
         useQueued = false;
     }
 
-    void Start()
+    /*void Start()
     {
         targetTaskObject = transform.parent.gameObject.GetComponent<Collider>();
-    }
+    }*/
 
     protected override void Initialize()
     {

@@ -6,6 +6,8 @@ public abstract class Interactable : MonoBehaviour {
     //private const int LAYER_PLAYER = 8;
 
     public string Name;
+
+    [System.NonSerialized]
     public string Description;
 
     public bool TriggerActive { get; private set; }

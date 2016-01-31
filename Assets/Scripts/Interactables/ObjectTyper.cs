@@ -7,10 +7,14 @@ public class ObjectTyper : Interactable {
     [System.NonSerialized]
     public string StringToType;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public AudioClip UseSound;
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public AudioClip SuccessSound;
+    //[System.NonSerialized]
+    public AudioClip FailSound;
+
+    private AudioSource source;
 
     private Color DimColor = Color.white;
     private Color BrightColor = Color.blue;
@@ -64,8 +68,10 @@ public class ObjectTyper : Interactable {
 
         if(UseSound != null)
         {
-            //TODO Play use sound
-            //UseSound
+            // Play looping use sound
+            source.loop = true;
+            source.clip = UseSound;
+            source.Play();
         }
     }
 
@@ -77,16 +83,26 @@ public class ObjectTyper : Interactable {
 
         if(UseSound != null)
         {
-            //TODO Stop playing the use sound
-            //UseSound.Stop
+            if(source.isPlaying)
+            {
+                source.Stop();
+            }
         }
 
         if(IsDone)
         {
-            //Play success soung
+            // Play success sound
             if(SuccessSound != null)
             {
-                //SuccessSound
+                source.PlayOneShot(SuccessSound);
+            }
+        }
+        else
+        {
+            // Play fail sound
+            if(GameManager.instance.PersonalTaskFailSound != null)
+            {
+                source.PlayOneShot(GameManager.instance.PersonalTaskFailSound);
             }
         }
 
@@ -95,14 +111,16 @@ public class ObjectTyper : Interactable {
 
     protected override void Done()
     {
-        Debug.Log("Typing done!", gameObject);
-        //TODO Play personal task success sound
-
         prevInput = "";
     }
 
-	void Start()
+	protected virtual void Awake()
     {
+        source = gameObject.AddComponent<AudioSource>();
+        source.loop = false;
+        source.playOnAwake = false;
+        source.spatialize = false;
+
         // Get hex values for colors
         dimColorHex = ColorToHex(DimColor);
         brightColorHex = ColorToHex(BrightColor);
@@ -114,6 +132,8 @@ public class ObjectTyper : Interactable {
 
         // Disable label by default
         textObject.SetActive(false);
+
+        base.Awake();
 
         enabled = false;
 	}
@@ -133,8 +153,6 @@ public class ObjectTyper : Interactable {
                 {
                     if(input == nextLetter)
                     {
-                        //TODO Play typing sound
-
                         typeProgress++;
 
                         if(typeProgress < StringToType.Length)
@@ -151,11 +169,6 @@ public class ObjectTyper : Interactable {
                     }
                     else
                     {
-                        Debug.LogError("Oops - typed wrong!", gameObject);
-
-                        //TODO Play error sound
-                        //GameManager.Instance.TaskErrorSound
-
                         EndUseInteractable();
                     }
                 }
@@ -233,10 +246,27 @@ public class ObjectTyper : Interactable {
 
         if(t != null)
         {
+            gameObject.SetActive(true);
             Description = t.description;
             StringToType = t.phraseToType;
-            //UseSound = t.loopSFX;
-            //SuccessSound = t.successSFX;
+
+            Debug.Log(t.loopSFX, gameObject);
+            Debug.Log(t.successSFX, gameObject);
+            Debug.Log(t.failSFX, gameObject);
+
+            if(t.loopSFX != "")
+            {
+                UseSound = (AudioClip)Resources.Load("Sfx/Personal/" + t.loopSFX);
+            }
+            if(t.successSFX != "")
+            {
+                SuccessSound = (AudioClip)Resources.Load("Sfx/Personal/" + t.successSFX);
+            }
+            if(t.failSFX != "")
+            {
+                FailSound = (AudioClip)Resources.Load("Sfx/Personal/" + t.failSFX);
+            }
+
             gameObject.SetActive(true);
             UpdateLabelColor();
 
@@ -262,7 +292,8 @@ public class ObjectTyper : Interactable {
 
         prevInput = "";
         showText = false;
-        nextLetter = "";
         typeProgress = 0;
+
+        GetNextLetter();
     }
 }

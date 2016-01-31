@@ -266,6 +266,10 @@ Prefab:
       propertyPath: targetTaskObject
       value: 
       objectReference: {fileID: 1313499301}
+    - target: {fileID: 11401206, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
+      propertyPath: targetTaskObject
+      value: 
+      objectReference: {fileID: 128976528}
     - target: {fileID: 11420734, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
       propertyPath: targetTaskObject
       value: 
@@ -274,10 +278,6 @@ Prefab:
       propertyPath: targetTaskObject
       value: 
       objectReference: {fileID: 1926214794}
-    - target: {fileID: 11401206, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
-      propertyPath: targetTaskObject
-      value: 
-      objectReference: {fileID: 128976528}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03cf022c98d704873b4fa9404ef1d0db, type: 2}
   m_IsPrefabParent: 0
@@ -318,6 +318,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 419058, guid: 57c9ec05afde04f8f9c76f1c68d1bab7, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11480958, guid: 57c9ec05afde04f8f9c76f1c68d1bab7, type: 2}
+      propertyPath: PlaySound
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

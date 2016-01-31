@@ -123,14 +123,18 @@ public abstract class Interactable : MonoBehaviour {
     protected abstract void UnsetNearest();
     protected abstract void Done();
 
-    void Awake()
+    protected virtual void Awake()
     {
         DistanceToPlayer = -1.0f;
         EventManager.StartListening("DataLoaded", Initialize);
+        EventManager.StartListening("new_day", Reset);
+
+        gameObject.SetActive(false);
     }
 
-    void OnDestroy() {
+    protected virtual void OnDestroy() {
         EventManager.StopListening("DataLoaded", Initialize);
+        EventManager.StopListening("new_day", Reset);
     }
 
     public virtual void Reset()

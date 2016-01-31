@@ -370,6 +370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: call_president
   targetTaskObject: {fileID: 0}
+  UseSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11414638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +385,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: adjust_heading
   targetTaskObject: {fileID: 0}
+  UseSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11417014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,6 +399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: workout
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11420734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -408,6 +415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: viewscreen_on
   targetTaskObject: {fileID: 0}
+  UseSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11431054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,6 +430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: engage
   targetTaskObject: {fileID: 0}
+  UseSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11437490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,6 +444,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: bedtime
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11444592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: brush_teeth
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11457126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,6 +474,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: water_plants
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11461358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,6 +489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: makeup
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11476234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +504,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: eat_lunch
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!114 &11477518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,6 +519,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: pee
+  UseSound: {fileID: 0}
+  SuccessSound: {fileID: 0}
+  FailSound: {fileID: 0}
 --- !u!135 &13500568
 SphereCollider:
   m_ObjectHideFlags: 1

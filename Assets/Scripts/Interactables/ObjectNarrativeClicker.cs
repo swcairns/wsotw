@@ -8,8 +8,12 @@ public class ObjectNarrativeClicker : Interactable {
     private const int LAYER_TASKOBJECT = 10;
     private const int LAYERMASK = (1 << LAYER_TASKOBJECT);
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public AudioClip UseSound;
+    //[System.NonSerialized]
+    public AudioClip FailSound;
+
+    private AudioSource source;
 
     public Collider targetTaskObject;
 
@@ -44,7 +48,6 @@ public class ObjectNarrativeClicker : Interactable {
 
     protected override void Done()
     {
-        // Play use sound
     }
 
     void Update()
@@ -79,23 +82,27 @@ public class ObjectNarrativeClicker : Interactable {
 
     void Click()
     {
-        if(UseSound != null)
-        {
-            //TODO Play use sound
-            //UseSound
-        }
-
         useQueued = false;
 
-        //TODO Check with NarrativeManager if this Interactable is Done
-        //if(NarrativeManager.instance.CheckSuccess(Name))
-        //{
-        Debug.Log("Narrative clicking done!", gameObject);
-        DoneInteractable();
-        //}
-        //else
-        //{
-        //}
+        // Check with NarrativeManager if this Interactable is Done
+        if(NarrativeManager.Instance.PerformTask(Name, true))
+        {
+            if(UseSound != null)
+            {
+                source.PlayOneShot(UseSound);
+            }
+
+            DoneInteractable();
+        }
+        else
+        {
+            if(FailSound != null)
+            {
+                source.PlayOneShot(FailSound);
+            }
+
+            EndUseInteractable();
+        }
     }
 
     public void ResetUseQueued()
@@ -103,10 +110,15 @@ public class ObjectNarrativeClicker : Interactable {
         useQueued = false;
     }
 
-    /*void Start()
+    protected override void Awake()
     {
-        targetTaskObject = transform.parent.gameObject.GetComponent<Collider>();
-    }*/
+        source = gameObject.AddComponent<AudioSource>();
+        source.loop = false;
+        source.playOnAwake = false;
+        source.spatialize = false;
+
+        base.Awake();
+    }
 
     protected override void Initialize()
     {
@@ -115,7 +127,15 @@ public class ObjectNarrativeClicker : Interactable {
         if(t != null)
         {
             Description = t.description;
-            //UseSound = t.loopSFX;
+
+            if(t.successSFX != "")
+            {
+                UseSound = (AudioClip)Resources.Load("Sfx/Narrative/" + t.successSFX);
+            }
+            if(t.failSFX != "")
+            {
+                FailSound = (AudioClip)Resources.Load("Sfx/Narrative/" + t.failSFX);
+            }
             gameObject.SetActive(true);
         }
         else

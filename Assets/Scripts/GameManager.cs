@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour {
 
     // Assets
     public GameObject TyperTextPrefab;
-    public AudioClip TaskSuccessSound;
-    public AudioClip TaskFailSound;
+    public AudioClip PersonalTaskFailSound;
 
 	void Awake()
     {

@@ -10,8 +10,12 @@ public class ObjectClicker : Interactable {
 
     public Collider targetTaskObject;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     public AudioClip UseSound;
+    //[System.NonSerialized]
+    public AudioClip FailSound;
+
+    private AudioSource source;
 
     private bool useQueued = false;
 
@@ -44,7 +48,6 @@ public class ObjectClicker : Interactable {
 
     protected override void Done()
     {
-        // Play use sound
     }
 
     void Update()
@@ -79,16 +82,27 @@ public class ObjectClicker : Interactable {
 
     void Click()
     {
-        if(UseSound != null)
-        {
-            //TODO Play use sound
-            //UseSound
-        }
-
         useQueued = false;
 
-        Debug.Log("Clicking done!", gameObject);
-        DoneInteractable();
+        // Check with NarrativeManager if this Interactable is Done
+        if(NarrativeManager.Instance.PerformTask(Name, true))
+        {
+            if(UseSound != null)
+            {
+                source.PlayOneShot(UseSound);
+            }
+
+            DoneInteractable();
+        }
+        else
+        {
+            if(FailSound != null)
+            {
+                source.PlayOneShot(FailSound);
+            }
+
+            EndUseInteractable();
+        }
     }
 
     public void ResetUseQueued()
@@ -96,10 +110,15 @@ public class ObjectClicker : Interactable {
         useQueued = false;
     }
 
-    /*void Start()
+    protected override void Awake()
     {
-        targetTaskObject = transform.parent.gameObject.GetComponent<Collider>();
-    }*/
+        source = gameObject.AddComponent<AudioSource>();
+        source.loop = false;
+        source.playOnAwake = false;
+        source.spatialize = false;
+
+        base.Awake();
+    }
 
     protected override void Initialize()
     {
@@ -108,7 +127,15 @@ public class ObjectClicker : Interactable {
         if(t != null)
         {
             Description = t.description;
-            //UseSound = t.loopSFX;
+
+            if(t.successSFX != "")
+            {
+                UseSound = (AudioClip)Resources.Load("Sfx/Ship/" + t.successSFX);
+            }
+            if(t.failSFX != "")
+            {
+                FailSound = (AudioClip)Resources.Load("Sfx/Ship/" + t.failSFX);
+            }
             gameObject.SetActive(true);
         }
         else

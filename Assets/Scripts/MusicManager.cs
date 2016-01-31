@@ -45,12 +45,16 @@ public class MusicManager : MonoBehaviour {
 
         // Create lists of all the tracks.
         foreach (AudioSource track in transform.GetComponents<AudioSource>())
+        //for (int x = 2; x < transform.GetComponents<AudioSource>().Length; x++)
         {
             audioList.Add(track);
             track.loop = true;
             track.playOnAwake = false;
             track.volume = 0;
         }
+        // Remove the ambient sound tracks.
+        audioList.Remove(audioList[1]);
+        audioList.Remove(audioList[0]);
 
         // Set the "first" tracks to not loop.
         neut_personal_1st.loop = false;

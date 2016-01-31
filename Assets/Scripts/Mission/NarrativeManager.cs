@@ -33,26 +33,38 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	}
 
 	public bool PerformTask(string name) {
-		Day day = days.Find(item => item.dayNumber == currentDay);
+		Debug.Log("Narrative Manager: Performing Task: " + name);
+		Day day = Today();
 		Task task = day.FindTaskByName(name);
 
-		// If this task has a priority of null
+		// If this task has a null priority, it's either a personal task
+		// Or a narrative task.
 		if (task.priority == null) {
 			Ritual ritual = day.FindRitualByTask(name);
-			int? maxPriority = 0;
-			foreach (Task t in ritual.tasks) {
-				if (t.priority > maxPriority) {
-					maxPriority = t.priority;
+
+			//If this is a personal ritual, then we need to assign it a priority.
+			if (ritual.ritualType == "personal") {
+				int? maxPriority = 0;
+				foreach (Task t in ritual.tasks) {
+					if (t.priority > maxPriority) {
+						maxPriority = t.priority;
+					}
 				}
+
+				task.priority = maxPriority + 1;
 			}
 
-			task.priority = maxPriority + 1;
+			// If this is a narrative task, then we don't need to do anything yet.
 		}
 
+		// Perform the task. If we're successful, return true.
 		if (day.PerformTask(name)) {
+			Debug.Log("Narrative Manager: Task Succeeded!!");
 			return true;
 		}
 		else {
+			strikes++;
+			Debug.Log("Narrative Manager: Task Failed :( You have " + strikes + " strikes");
 			return false;
 		};
 	}
@@ -65,7 +77,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	}
 
 	void HandleStrike() {
-		strikes++;
+		//strikes++;
 
 		if (strikes >= maxStrikes) {
 			Debug.Log("GAME OVER");
@@ -126,8 +138,28 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		if (data.Keys.Contains("task_priority")) {
 			taskPriority = int.Parse(data["task_priority"].ToString());
 		}
-		string taskDescription = data["task_description"].ToString();
-		Task task = new Task(taskName, taskPriority, taskDescription);
+
+		string taskDescription = "";
+		if (data.Keys.Contains["task_description"]) {
+			taskDescription = data["task_description"].ToString();
+		}
+	
+		string phraseToType = "";
+		if (data.Keys.Contains["phrase_to_type"]) {
+			taskDescription = data["phrase_to_type"].ToString();
+		}
+
+		string loopSFX = "";
+		if (data.Keys.Contains["loop_sfx"]) {
+			taskDescription = data["loop_sfx"].ToString();
+		}
+
+		string successSFX = "";
+		if (data.Keys.Contains["success_sfx"]) {
+			taskDescription = data["success_sfx"].ToString();
+		}
+
+		Task task = new Task(taskName, taskPriority, taskDescription, phraseToType, loopSFX, successSFX);
 
 		// Add that task to the ritual
 		ritual.tasks.Add(task);
@@ -147,6 +179,17 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 		}
 
 		return taskList;
+	}
+
+	Task FindTaskByName(string name) {
+		foreach (Ritual ritual in Today().rituals) {
+			foreach(Task task in ritual.tasks) {
+				if (task.name == name) {
+					return task;
+				}
+			}
+		}
+		return null;
 	}
 
 	void HandleTest(string value) {

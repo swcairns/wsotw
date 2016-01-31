@@ -35,9 +35,19 @@ public class Day {
 		return null;
 	}
 
+	// Returns true if this task is performed successfully
+	// Returns false if:
+		// - There is a different ritual in progress that we haven't finished yet.
+		// - You're doing this task in the wrong order.
+		// - You fail doing the task for some reason.
 	public bool PerformTask(string name) {
 		// First find which ritual this task is for.
 		Ritual ritual = FindRitualByTask(name);
+
+		// If this task is a narrative task, then return true right away.
+		if (ritual.ritualType == "narrative") {
+			return true;
+		}
 
 		// Now find out if there are other rituals that are in progress that we haven't finished yet.
 		foreach (Ritual r in rituals) {

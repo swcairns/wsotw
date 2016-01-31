@@ -17,7 +17,7 @@ public class Task {
 
 	public void Perform() {
 		this.status = "success";
-		EventManager.TriggerEvent("task_completed");
+		EventManager.Instance.TriggerEvent("task_completed");
 	}
 
 	public void Succeeded() {

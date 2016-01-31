@@ -5,14 +5,14 @@ public abstract class Interactable : MonoBehaviour {
 
     //private const int LAYER_PLAYER = 8;
 
+    public string Name;
+
     public bool TriggerActive { get; private set; }
     public bool IsNearest { get; private set; }
     public bool IsInUse { get; private set; }
     public bool IsDone { get; private set; }
 
     public float DistanceToPlayer { get; set; }
-
-    public string Name { get; protected set; }
 
     public void ActivateTrigger()
     {
@@ -28,6 +28,7 @@ public abstract class Interactable : MonoBehaviour {
             EndUseInteractable();
         }
 
+        DistanceToPlayer = -1.0f;
         TriggerActive = false;
     }
 
@@ -88,12 +89,21 @@ public abstract class Interactable : MonoBehaviour {
     {
         if(!IsDone)
         {
+            //TODO Check with manager if the ritual was successful
+            //if(NarrativeManager.Instance.CheckTask(Name))
+            //{
             IsDone = true;
             Done();
+            EndUseInteractable();
             DeactivateTrigger();
             PlayerInteractCheck.Instance.ActiveInteractableDone();
             GetComponent<Collider>().enabled = false;
             enabled = false;
+            //}
+            /*else
+            {
+                NarrativeManager.Instance.TaskFailed(Name);   
+            }*/
         }
     }
 
@@ -113,4 +123,9 @@ public abstract class Interactable : MonoBehaviour {
     protected abstract void SetNearest();
     protected abstract void UnsetNearest();
     protected abstract void Done();
+
+    void Awake()
+    {
+        DistanceToPlayer = -1.0f;
+    }
 }

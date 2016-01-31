@@ -124,4 +124,11 @@ public class ObjectNarrativeClicker : Interactable {
             gameObject.SetActive(false);
         }
     }
+
+    public override void Reset()
+    {
+        base.Reset();
+
+        useQueued = false;
+    }
 }

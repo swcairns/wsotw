@@ -84,7 +84,7 @@ public abstract class Interactable : MonoBehaviour {
     {
         if(!IsDone)
         {
-            if(NarrativeManager.Instance.PerformTask(Name, IsDone))
+            if(NarrativeManager.Instance.PerformTask(Name, true))
             {
                 IsDone = true;
                 Done();
@@ -122,6 +122,15 @@ public abstract class Interactable : MonoBehaviour {
 
     void OnDestroy() {
         EventManager.StopListening("DataLoaded", Initialize);
+    }
+
+    public virtual void Reset()
+    {
+        TriggerActive = false;
+        IsNearest = false;
+        IsInUse = false;
+        IsDone = false;
+        DistanceToPlayer = -1.0f;
     }
 
     protected abstract void Initialize();

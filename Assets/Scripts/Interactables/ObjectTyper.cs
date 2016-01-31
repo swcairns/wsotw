@@ -74,7 +74,10 @@ public class ObjectTyper : Interactable {
         typeProgress = 0;
         UpdateLabelColor();
 
-        NarrativeManager.Instance.PerformTask(Name, IsDone);
+        if(!IsDone)
+        {
+            NarrativeManager.Instance.PerformTask(Name, false);
+        }
 
         if(UseSound != null)
         {
@@ -255,5 +258,15 @@ public class ObjectTyper : Interactable {
             Debug.LogWarning("Task " + Name + " does not exist on day " + NarrativeManager.Instance.Today().dayNumber + "!", gameObject);
             gameObject.SetActive(false);
         }
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+
+        prevInput = "";
+        showText = false;
+        nextLetter = "";
+        typeProgress = 0;
     }
 }

@@ -54,7 +54,7 @@ public class Day {
 			if (r.name != ritual.name) {
 				if (r.status == "in_progress") {
 					Debug.Log("A different ritual is still in progress! You dun goofed.");
-					EventManager.TriggerEvent("strike");
+					//EventManager.TriggerEvent("strike");
 					return false;
 				}
 			}
@@ -65,7 +65,7 @@ public class Day {
 		foreach (Ritual r in rituals) {
 			if (r.priority != null && r.priority < ritual.priority && r.status != "succeeded") {
 				Debug.Log("You didn't perform the rituals in the correct order");
-				EventManager.TriggerEvent("strike");
+				//EventManager.TriggerEvent("strike");
 				return false;
 			}			
 		}

@@ -64,6 +64,8 @@ public abstract class Interactable : MonoBehaviour {
         {
             if(!IsInUse)
             {
+                Ritual ritual = NarrativeManager.Instance.Today().FindRitualByTask(Name);
+                EventManager.TriggerEvent("ritual_" + ritual.ritualType);
                 IsInUse = true;
                 Use();
             }

@@ -33,7 +33,7 @@ public class Ritual {
 			if (t.priority != null) {
 				if (t.priority < task.priority && t.status != "succeeded") {
 					Debug.Log("You didn't perform the tasks in the right order! STRIKE.");
-					EventManager.TriggerEvent("strike");
+					//EventManager.TriggerEvent("strike");
 					return false;
 				}
 			}

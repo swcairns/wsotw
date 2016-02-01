@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using LitJson;
 using System.Collections;
-using System;
 using System.Collections.Generic;
 
 public class NarrativeManager : Singleton<NarrativeManager> {
@@ -73,7 +72,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 			return true;
 		}
 		else {
-			strikes++;
+            EventManager.TriggerEvent("strike");
 			Debug.Log("Narrative Manager: Task Failed :( You have " + strikes + " strikes");
 			return false;
 		};
@@ -87,7 +86,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 	}
 
 	void HandleStrike() {
-		//strikes++;
+		strikes++;
 
 		if (strikes >= maxStrikes) {
 			Debug.Log("GAME OVER");

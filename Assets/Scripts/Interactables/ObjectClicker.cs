@@ -123,7 +123,6 @@ public class ObjectClicker : Interactable {
     protected override void Initialize()
     {
         Task t = NarrativeManager.Instance.FindTaskByNameToday(Name);
-
         if(t != null)
         {
             Description = t.description;
@@ -137,6 +136,7 @@ public class ObjectClicker : Interactable {
                 FailSound = (AudioClip)Resources.Load("Sfx/Ship/" + t.failSFX);
             }
             gameObject.SetActive(true);
+            Debug.Log("I'm inside Initialize and inside the null check");
         }
         else
         {

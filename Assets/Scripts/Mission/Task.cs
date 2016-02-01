@@ -17,7 +17,7 @@ public class Task {
 		this.priority = priority;
 		this.description = description;
         this.phraseToType = phraseToType;
-		this.status = "incomplete";
+		this.status = "not_started";
 		this.loopSFX = loopSFX;
 		this.successSFX = successSFX;
         this.failSFX = failSFX;

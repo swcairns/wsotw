@@ -7,15 +7,31 @@ public class Ritual {
 	public string name;
 	public int? priority;
 	public string ritualType;
-	public string status;
 	public List<Task> tasks;
+
+    public string Status {
+        get {
+            int completedCount = tasks.FindAll(item => item.status == "succeeded").Count;
+            Debug.Log("Ritual Status Check. " + name + " " + completedCount + "/" + tasks.Count + " tasks completed");
+            if (completedCount == tasks.Count)
+            {
+                return "succeeded";
+            }
+            else if (completedCount > 0 && completedCount < tasks.Count)
+            {
+                return "in_progress";
+            }
+            else
+            {
+                return "not_started";
+            }
+        }
+    }
 
 	public Ritual(string name, int? priority, string ritualType) {
 		this.name = name;
 		this.priority = priority;
 		this.ritualType = ritualType;
-		this.status = "incomplete";
-
 		tasks = new List<Task>();
 	}
 
@@ -39,30 +55,7 @@ public class Ritual {
 			}
 		}
 
-		// Looking good! Now let's actually perform the task.
-		bool result = task.Perform(succeeded);
-
-		// Update the status of this ritual so we know if it's succeeded or just incomplete.
-		UpdateStatus();
-
-		return result;
-	}
-
-	public void UpdateStatus() {
-		// If all tasks have succeeded, then this ritual is complete.
-		bool succeeded = true;
-		foreach (Task t in tasks) {
-			if (t.status != "succeeded") {
-				succeeded = false;
-			}
-		}
-		if (succeeded) {
-			status = "succeeded";
-			return;
-		}
-
-		// If only some tasks have succeeded, then this ritual is in progress.
-		// Since we're here checking the ritual, then at least one task must have been performed.
-		status = "in_progress"; 
+        // Looking good! Now let's actually perform the task.
+        return task.Perform(succeeded);
 	}
 }

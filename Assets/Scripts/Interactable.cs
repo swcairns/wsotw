@@ -128,14 +128,14 @@ public abstract class Interactable : MonoBehaviour {
     protected virtual void Awake()
     {
         DistanceToPlayer = -1.0f;
-        EventManager.StartListening("DataLoaded", Initialize);
+        EventManager.StartListening("new_day", Initialize);
         EventManager.StartListening("new_day", Reset);
 
         gameObject.SetActive(false);
     }
 
     protected virtual void OnDestroy() {
-        EventManager.StopListening("DataLoaded", Initialize);
+        EventManager.StopListening("new_day", Initialize);
         EventManager.StopListening("new_day", Reset);
     }
 
@@ -147,6 +147,7 @@ public abstract class Interactable : MonoBehaviour {
         IsInUse = false;
         IsDone = false;
         DistanceToPlayer = -1.0f;
+        GetComponent<Collider>().enabled = true;
     }
 
     protected abstract void Initialize();

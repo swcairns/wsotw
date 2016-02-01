@@ -47,7 +47,7 @@ public class MusicManager : MonoBehaviour {
     // Listen for shit.
     void OnEnable()
     {
-        EventManager.StartListening("new_day", HandleDayStart);
+        EventManager.StartListening("new_day", HandleDayEnd);
         //EventManager.StartListening("end_day", HandleDayStart);
 
         // Rituals
@@ -62,7 +62,7 @@ public class MusicManager : MonoBehaviour {
 
     void OnDisable()
     {
-        EventManager.StopListening("new_day", HandleDayStart);
+        EventManager.StopListening("new_day", HandleDayEnd);
         //EventManager.StopListening("end_day", HandleDayStart);
 
         // Rituals
@@ -104,22 +104,6 @@ public class MusicManager : MonoBehaviour {
         // Set and stop the current tracks.
         ResetTracks();
 
-    }
-
-    void ResetTracks()
-    {
-        // Set the "current" track for each ritual type.
-        //cur_personal = neg_personal_1st;
-        cur_personal = neut_personal_1st;
-        cur_ship = neut_ship_1st;
-        cur_narrative = neut_narrative_1st;
-
-        //Debug.Log("current personal: " + cur_personal);
-    }
-
-    void HandleDayStart()
-    {
-        Debug.Log("Start Day!");
         // Play the ambient sounds.
         amb_engineNoise.Play();
         amb_telemetry.Play();
@@ -127,6 +111,17 @@ public class MusicManager : MonoBehaviour {
         // Fade in the ambient sounds.
         StartCoroutine(FadeInTrack(amb_engineNoise, enviroVol));
         StartCoroutine(FadeInTrack(amb_telemetry, enviroVol));
+
+    }
+
+    void ResetTracks()
+    {
+        // Set the "current" track for each ritual type.
+        cur_personal = neut_personal_1st;
+        cur_ship = neut_ship_1st;
+        cur_narrative = neut_narrative_1st;
+
+        //Debug.Log("current personal: " + cur_personal);
     }
 
     void HandleRitualStart()
@@ -215,11 +210,9 @@ public class MusicManager : MonoBehaviour {
         }
 
         // Fade out the ambient sounds.
-        StartCoroutine("FadeOutTrack", amb_engineNoise);
-        StartCoroutine("FadeOutTrack", amb_telemetry);
+        //StartCoroutine("FadeOutTrack", amb_engineNoise);
+        //StartCoroutine("FadeOutTrack", amb_telemetry);
     }
-    // Fade out all tracks' volume to 0.
-    // foreach (AudioSource track in audioTrack) fade to black
 	
 	// Fade between two tracks.
     void FadeTwoTracks (AudioSource cur, AudioSource target, float vol)

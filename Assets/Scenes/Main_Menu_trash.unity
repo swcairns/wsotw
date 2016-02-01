@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -97,7 +97,7 @@ GameObject:
   - 92: {fileID: 607367742}
   - 124: {fileID: 607367741}
   - 81: {fileID: 607367740}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 607367739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -273,11 +273,11 @@ RectTransform:
   m_LocalScale: {x: 2.102375, y: 8.074392, z: 1.2099999}
   m_Children:
   - {fileID: 622944849}
-  m_Father: {fileID: 1650940385}
-  m_RootOrder: 1
+  m_Father: {fileID: 1892983042}
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.311157, y: -9.1}
+  m_AnchoredPosition: {x: 11.311157, y: 103}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834004942
@@ -381,8 +381,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 11.2, y: 6.2196307, z: 1.9111826}
   m_Children: []
-  m_Father: {fileID: 1650940385}
-  m_RootOrder: 0
+  m_Father: {fileID: 1892983042}
+  m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 552, y: 312}
@@ -447,9 +447,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 929160355}
-  - {fileID: 834004941}
+  m_Children: []
   m_Father: {fileID: 1892983042}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -635,6 +633,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1650940385}
+  - {fileID: 929160355}
+  - {fileID: 834004941}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}

@@ -12,7 +12,7 @@ public class Ritual {
     public string Status {
         get {
             int completedCount = tasks.FindAll(item => item.status == "succeeded").Count;
-            Debug.Log("Ritual Status Check. " + name + " " + completedCount + "/" + tasks.Count + " tasks completed");
+            Debug.Log("Ritual Status Check. " + name + " " + completedCount + "/" + tasks.Count + " tasks completed (P" + priority + ")");
             if (completedCount == tasks.Count)
             {
                 return "succeeded";

@@ -136,7 +136,6 @@ public class ObjectClicker : Interactable {
                 FailSound = (AudioClip)Resources.Load("Sfx/Ship/" + t.failSFX);
             }
             gameObject.SetActive(true);
-            Debug.Log("I'm inside Initialize and inside the null check");
         }
         else
         {

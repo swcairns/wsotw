@@ -43,7 +43,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
     }
 
     public bool PerformTask(string name, bool succeeded) {
-        Debug.Log("Narrative Manager: Performing Task: " + name);
+        Debug.Log("Narrative Manager: Performing Task: " + name + ". succeeded=" + succeeded);
         Day day = Today();
         Task task = day.FindTaskByName(name);
 
@@ -72,7 +72,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
         // Perform the task. If we're successful, return true.
         if (day.PerformTask(name, succeeded)) {
 
-            int completedRituals = Today().rituals.FindAll(item => item.Status == "success").Count;
+            int completedRituals = Today().rituals.FindAll(item => item.Status == "succeeded").Count;
             Debug.Log("Narrative Manager: Task Succeeded!!");
             Debug.Log("Status:" + completedRituals + "/" + Today().rituals.Count + " rituals have been completed");
             return true;
@@ -210,7 +210,7 @@ public class NarrativeManager : Singleton<NarrativeManager> {
 
 		foreach (Ritual ritual in Today().rituals) {
 			foreach(Task task in ritual.tasks) {
-				Debug.Log(task.name);
+				Debug.Log("RITUAL: " + ritual.name + "(P" + ritual.priority + ") TASK: " + task.name + " (P" + task.priority + ")");
 				taskList.Add(task);
 			}
 		}
